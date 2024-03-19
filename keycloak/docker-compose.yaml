@@ -1,0 +1,45 @@
+version: "3"
+services:
+
+  keycloak_db:
+    image: postgres:15
+    ports:
+      - "15432:5432"
+    environment:
+      - POSTGRES_DB=keycloak
+      - POSTGRES_USER=keycloak
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_ROOT_PASSWORD=root
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    networks:
+      - keycloak-network
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0.1
+    command:
+      - start-dev
+    environment:
+      - KC_DB:postgres
+      - KC_DB_DRIVER:postgresql
+      - KC_DB_URL=jdbc:postgresql://keycloak_db:5432/keycloak
+      - KC_DB_USERNAME=keycloak
+      - KC_DB_PASSWORD=admin
+      - KC_FEATURES=preview
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - KEYCLOAK_STATISTICS=all
+      - KEYCLOAK_ADMIN=root
+      - KEYCLOAK_ADMIN_PASSWORD=Arvyal1ofb
+    ports:
+      - "18443:8443"
+      - "18080:8080"
+      - "19990:9990"
+    volumes:
+      - ./conf/keycloak.conf:/opt/keycloak/conf/keycloak.conf
+    networks:
+      - keycloak-network
+
+networks:
+  keycloak-network:
+    driver: bridge
