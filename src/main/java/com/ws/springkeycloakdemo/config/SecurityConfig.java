@@ -1,4 +1,4 @@
-package com.ws.springkeycloakdemo;
+package com.ws.springkeycloakdemo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,7 +28,6 @@ public class SecurityConfig {
             .authorizeHttpRequests(
                 customizer -> customizer
                     .requestMatchers("/error").permitAll()
-                    .requestMatchers("/manager.html").hasRole("MANAGER")
                     .anyRequest().authenticated()
             )
             .build();
