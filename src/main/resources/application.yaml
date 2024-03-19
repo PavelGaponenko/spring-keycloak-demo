@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: spring-keycloak-demo
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:18080/realms/demo-realm
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:18080/realms/demo-realm
+            user-name-attribute: preferred_username
+        registration:
+          keycloak:
+            client-id: spring-keycloak-demo
+            client-secret: BGUTdLu0cLHOU7LItqVxV9068yEQjoMC
+            scope: openid
+
+
+server:
+  port: 8081
