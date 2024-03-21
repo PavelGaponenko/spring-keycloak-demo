@@ -1,0 +1,12 @@
+###
+GET http://localhost:18080/realms/demo-realm/protocol/openid-connect/auth?response_type=code&client_id=spring-keycloak-demo&state=111&scope=openid profile&redirect_uri=http://localhost:8081/manager
+
+###
+POST http://localhost:18080/realms/demo-realm/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code&client_id=spring-keycloak-demo&client_secret=BGUTdLu0cLHOU7LItqVxV9068yEQjoMC&code=20a53f02-1a92-46f3-bd57-d1790995112b.280ee4ad-1f25-46b9-a0c3-1a0317f7ab66.1e64990d-a42a-4f7e-b628-14dbc23f647e&redirect_uri=http://localhost:8081/manager&state=111
+
+
+
+

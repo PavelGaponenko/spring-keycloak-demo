@@ -5,10 +5,16 @@ Content-Type: application/x-www-form-urlencoded
 client_id=spring-keycloak-demo&client_secret=BGUTdLu0cLHOU7LItqVxV9068yEQjoMC&username=p.gaponenko&password=password&grant_type=password
 
 ###
-GET {{ app-host }}/authenticated.html
+POST {{ keycloak-host }}/realms/demo-realm/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=refresh_token&client_id=spring-keycloak-demo&client_secret=BGUTdLu0cLHOU7LItqVxV9068yEQjoMC&refresh_token=eyJhbGciOiJIUzUxMiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJiZjFjZjExNi03ZDlkLTQ2MDMtYTM5NC03NmZkOTVhOGNmODYifQ.eyJleHAiOjE3MTEwMjI2MzUsImlhdCI6MTcxMTAyMjAzNSwianRpIjoiZjQwOTFlOGQtYjhlZi00NmYwLTkzMzUtYWM0NjdlNmI2NjFhIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDoxODA4MC9yZWFsbXMvZGVtby1yZWFsbSIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6MTgwODAvcmVhbG1zL2RlbW8tcmVhbG0iLCJzdWIiOiIxMjE2MzllNC1jYzQyLTRhYTEtYmEzNS1jYThlYTQzZTU2M2QiLCJ0eXAiOiJSZWZyZXNoIiwiYXpwIjoic3ByaW5nLWtleWNsb2FrLWRlbW8iLCJzZXNzaW9uX3N0YXRlIjoiOWUxOGFjYjUtZDJjNy00NDJhLWJjMDEtMmY1OGU1NWEyZTljIiwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwic2lkIjoiOWUxOGFjYjUtZDJjNy00NDJhLWJjMDEtMmY1OGU1NWEyZTljIn0.-oUN7jc98ZdiXA1YmXcXMfMJLUSRNJwgMRzhIUOcVR45jLunWEEkBfMGi4NHaqlaKGbi4QQqd3Ii-XLR0I5Cew
+
+###
+GET {{ app-host }}/authenticated
 Authorization: {{ token }}
 ###
-GET {{ app-host }}/manager.html
+GET {{ app-host }}/manager
 Authorization: {{ token }}
 
 

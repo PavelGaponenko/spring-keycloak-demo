@@ -21,13 +21,19 @@ import java.util.stream.Stream;
 public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()));
-        http.oauth2Login(Customizer.withDefaults());
-
         return http
+            .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
+            .oauth2Login(Customizer.withDefaults()).logout(logout -> logout
+                .logoutSuccessUrl("/")
+                .logoutUrl("/logout")
+                .invalidateHttpSession(true) // Очистка HTTP сессии после logout
+                .deleteCookies("JSESSIONID", "SESSION") // Удаление cookies после logout
+                .clearAuthentication(true)
+            )
             .authorizeHttpRequests(
                 customizer -> customizer
                     .requestMatchers("/error").permitAll()
+                    .requestMatchers("/manager").hasRole("MANAGER")
                     .anyRequest().authenticated()
             )
             .build();
@@ -38,13 +44,15 @@ public class SecurityConfig {
      */
     @Bean
     public JwtAuthenticationConverter jwtAuthenticationConverter() {
-        var converter = new JwtAuthenticationConverter();
-        var jwtGrantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
+        var jwtAuthenticationConverter = new JwtAuthenticationConverter();
+
         // указываем откуда брать имя пользователя
-        converter.setPrincipalClaimName("preferred_username");
+        jwtAuthenticationConverter.setPrincipalClaimName("preferred_username");
+
+        var jwtGrantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
 
         // конвертер для прав
-        converter.setJwtGrantedAuthoritiesConverter(jwt -> {
+        jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(jwt -> {
             var authorities = jwtGrantedAuthoritiesConverter.convert(jwt);
             var roles = jwt.getClaimAsStringList("demo_roles");
 
@@ -57,7 +65,7 @@ public class SecurityConfig {
                 .toList();
         });
 
-        return converter;
+        return jwtAuthenticationConverter;
     }
 
     /**
