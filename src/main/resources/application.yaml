@@ -14,7 +14,7 @@ spring:
         registration:
           keycloak:
             client-id: spring-keycloak-demo
-            client-secret: BGUTdLu0cLHOU7LItqVxV9068yEQjoMC
+            client-secret: bD4j3kew9tGqd5jPjktZHuRwthV6ZBRW
             scope: openid
   thymeleaf:
     prefix: classpath:/templates/

@@ -1,8 +1,8 @@
-###
+### TOKEN
 POST {{ keycloak-host }}/realms/demo-realm/protocol/openid-connect/token
 Content-Type: application/x-www-form-urlencoded
 
-client_id=spring-keycloak-demo&client_secret=BGUTdLu0cLHOU7LItqVxV9068yEQjoMC&username=p.gaponenko&password=password&grant_type=password
+client_id=spring-keycloak-demo&client_secret=bD4j3kew9tGqd5jPjktZHuRwthV6ZBRW&username=p.gaponenko&password=password&grant_type=password
 
 ###
 POST {{ keycloak-host }}/realms/demo-realm/protocol/openid-connect/token
