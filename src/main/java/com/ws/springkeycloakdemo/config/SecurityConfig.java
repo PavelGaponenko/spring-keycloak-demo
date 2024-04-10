@@ -37,7 +37,7 @@ public class SecurityConfig {
         converter.setPrincipalClaimName("preferred_username");
 
         converter.setJwtGrantedAuthoritiesConverter(jwt -> {
-            var roles = jwt.getClaimAsStringList("demo_roles");
+            var roles = jwt.getClaimAsStringList("app_roles");
 
             return roles.stream()
                 .filter(role -> role.startsWith("ROLE_"))
@@ -54,7 +54,7 @@ public class SecurityConfig {
         var oidcUserService = new OidcUserService();
         return userRequest -> {
             var oidcUser = oidcUserService.loadUser(userRequest);
-            var roles = oidcUser.getClaimAsStringList("demo_roles");
+            var roles = oidcUser.getClaimAsStringList("app_roles");
 
             var authorities = roles.stream()
                 .filter(role -> role.startsWith("ROLE_"))

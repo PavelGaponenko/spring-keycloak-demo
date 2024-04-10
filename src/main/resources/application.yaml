@@ -20,6 +20,9 @@ spring:
     prefix: classpath:/templates/
     suffix: .html
 
-
 server:
   port: 8081
+
+logging:
+  level:
+    org.springframework.security: TRACE
