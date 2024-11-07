@@ -1,10 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Привет, аутентифицированный пользователь!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель пользователя</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: #ffffff;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+        h1 {
+            color: #333333;
+        }
+        .info {
+            margin-top: 10px;
+            color: #555555;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 5px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .manager-button {
+            background-color: #28a745;
+        }
+        .manager-button:hover {
+            background-color: #218838;
+        }
+    </style>
 </head>
 <body>
-<h1>Привет, аутентифицированный пользователь!</h1>
+<div class="container">
+    <h1>Добро пожаловать, пользователь!</h1>
+    <p class="info">Вы успешно вошли в систему.</p>
+    <a href="/logout" class="button">Выйти</a>
+    <a href="/manager" class="button manager-button">Страница менеджера</a>
+</div>
 </body>
 </html>

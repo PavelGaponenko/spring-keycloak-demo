@@ -1,10 +1,10 @@
 version: "3"
 services:
 
-  keycloak_db:
+  keycloak-db:
     image: postgres:15
     ports:
-      - "15432:5432"
+      - "15444:5432"
     environment:
       - POSTGRES_DB=keycloak
       - POSTGRES_USER=keycloak
@@ -22,7 +22,7 @@ services:
     environment:
       - KC_DB:postgres
       - KC_DB_DRIVER:postgresql
-      - KC_DB_URL=jdbc:postgresql://keycloak_db:5432/keycloak
+      - KC_DB_URL=jdbc:postgresql://keycloak-db:5432/keycloak
       - KC_DB_USERNAME=keycloak
       - KC_DB_PASSWORD=admin
       - KC_FEATURES=preview

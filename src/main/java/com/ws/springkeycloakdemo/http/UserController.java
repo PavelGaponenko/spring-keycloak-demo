@@ -1,14 +1,12 @@
 package com.ws.springkeycloakdemo.http;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class DemoController {
-    @GetMapping("/authenticated")
+public class UserController {
+    @GetMapping("/")
     public String getAuthenticatedPage() {
         return "authenticated";
     }
@@ -17,10 +15,5 @@ public class DemoController {
     @PreAuthorize("hasRole('MANAGER')")
     public String getManagerPage() {
         return "manager";
-    }
-
-    @GetMapping("/logout")
-    public void logout(HttpServletRequest request) throws ServletException {
-        request.logout();
     }
 }

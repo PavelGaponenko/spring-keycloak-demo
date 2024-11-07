@@ -5,16 +5,16 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:18080/realms/demo-realm
+          issuer-uri: http://localhost:18080/realms/ws-realm
       client:
         provider:
           keycloak:
-            issuer-uri: http://localhost:18080/realms/demo-realm
+            issuer-uri: http://localhost:18080/realms/ws-realm
             user-name-attribute: preferred_username
         registration:
           keycloak:
             client-id: spring-keycloak-demo
-            client-secret: bD4j3kew9tGqd5jPjktZHuRwthV6ZBRW
+            client-secret: 7LAn5Rp8olsD1Jn2y6t82P79Ts3jKAwG
             scope: openid
   thymeleaf:
     prefix: classpath:/templates/

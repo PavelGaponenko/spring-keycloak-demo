@@ -2,7 +2,13 @@
 POST {{ keycloak-host }}/realms/demo-realm/protocol/openid-connect/token
 Content-Type: application/x-www-form-urlencoded
 
-client_id=spring-keycloak-demo&client_secret=bD4j3kew9tGqd5jPjktZHuRwthV6ZBRW&username=p.gaponenko&password=password&grant_type=password
+client_id=spring-keycloak-demo&client_secret=QgiJSO3sgFEAafuBFqQ08Hpe4f3zreA4&username=p.gaponenko&password=p.gaponenko&grant_type=password
+
+###
+POST http://localhost:18080/realms/ws-realm/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=spring-keycloak-demo&client_secret=7LAn5Rp8olsD1Jn2y6t82P79Ts3jKAwG&username=p.gaponenko&password=p.gaponenko&grant_type=password
 
 ### REFRESH
 POST {{ keycloak-host }}/realms/demo-realm/protocol/openid-connect/token
