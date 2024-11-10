@@ -13,7 +13,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
         }
         .container {
@@ -23,8 +23,9 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
         }
-        h1 {
+        h2 {
             color: #00796b;
             margin-bottom: 20px;
         }
@@ -48,14 +49,88 @@
         .button:hover {
             background-color: #004d40;
         }
+        /* Стили для окна диалога */
+        .chat-window {
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+        .message-sent {
+            background-color: #d4f7dc;
+            align-self: flex-end;
+            text-align: right;
+        }
+        .message-received {
+            background-color: #e0e0e0;
+            align-self: flex-start;
+            text-align: left;
+        }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
+    <script>
+        let stompClient = null;
+
+        function connect() {
+            var socket = new SockJS('/gs-guide-websocket');
+            stompClient = Stomp.over(socket);
+            stompClient.connect({}, function (frame) {
+                console.log('Connected: ' + frame);
+                stompClient.subscribe('/topic/messages', function (message) {
+                    showMessage(JSON.parse(message.body));
+                });
+            });
+        }
+
+        function sendMessage() {
+            const text = document.getElementById("text").value;
+            if (text.trim() !== '') {
+                stompClient.send("/app/chat", {}, JSON.stringify({'text': text}));
+                addMessageToChat(text, true); // Отображение отправленного сообщения
+                document.getElementById("text").value = ''; // Очистка поля
+            }
+        }
+
+        function showMessage(message) {
+            addMessageToChat(message.text, false); // Отображение полученного сообщения
+        }
+
+        function addMessageToChat(text, isSent) {
+            const messagesDiv = document.getElementById("messages");
+            const messageElement = document.createElement("div");
+            messageElement.className = 'message ' + (isSent ? 'message-sent' : 'message-received');
+            messageElement.textContent = text;
+            messagesDiv.appendChild(messageElement);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight; // Автопрокрутка вниз
+        }
+
+        connect();
+    </script>
 </head>
 <body>
 
 <div class="container">
-    <h1>Добро пожаловать, Менеджер!</h1>
+    <h2>Страница менеджера</h2>
     <p>Вы вошли как менеджер. Используйте кнопки ниже для навигации:</p>
     <a href="/" class="button">Вернуться на страницу пользователя</a>
+</div>
+
+<div class="container">
+    <h2>Отправка сообщения</h2>
+    <input id="text" placeholder="Введите сообщение" />
+    <button class="button" onclick="sendMessage()">Отправить</button>
+    <div id="messages"></div>
 </div>
 
 </body>
