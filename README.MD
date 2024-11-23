@@ -129,6 +129,14 @@ public JwtAuthenticationConverter jwtAuthenticationConverter() {
     }
 ```
 
+## Работа с сокетами
+
+Реализовано простое общение с сервером через сокеты по протоколу STOMP.
+
 ## Работа с приложением
 
 Приложение доступно по ссылке: http://localhost:8081/
+
+## Jenkins
+
+Доступ в Jenkins: http://198.19.249.76:8080/

@@ -1,6 +1,5 @@
 version: "3"
 services:
-
   keycloak-db:
     image: postgres:15
     ports:
@@ -11,7 +10,7 @@ services:
       - POSTGRES_PASSWORD=admin
       - POSTGRES_ROOT_PASSWORD=root
     volumes:
-      - ./db:/var/lib/postgresql/data
+      - ./keycloak/db:/var/lib/postgresql/data
     networks:
       - keycloak-network
 
@@ -36,8 +35,8 @@ services:
       - "18080:8080"
       - "19990:9990"
     volumes:
-      - ./conf/keycloak.conf:/opt/keycloak/conf/keycloak.conf
-      - ./themes:/opt/keycloak/themes
+      - ./keycloak/conf/keycloak.conf:/opt/keycloak/conf/keycloak.conf
+      - ./keycloak/themes:/opt/keycloak/themes
     networks:
       - keycloak-network
 
