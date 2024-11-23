@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'master', url: 'https://github.com/PavelGaponenko/spring-keycloak-demo' // Укажите ваш репозиторий
+                git branch: 'master', url: 'https://github.com/PavelGaponenko/spring-keycloak-demo.git' // Укажите ваш репозиторий
             }
         }
 
