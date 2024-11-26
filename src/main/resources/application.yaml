@@ -5,11 +5,11 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:18080/realms/ws-realm
+          issuer-uri: http://198.19.249.76:18080/realms/ws-realm
       client:
         provider:
           keycloak:
-            issuer-uri: http://localhost:18080/realms/ws-realm
+            issuer-uri: http://198.19.249.76:18080/realms/ws-realm
             user-name-attribute: preferred_username
         registration:
           keycloak:
