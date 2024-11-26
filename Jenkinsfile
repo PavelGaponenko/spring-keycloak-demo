@@ -49,7 +49,7 @@ pipeline {
                     sh 'fuser -k $SERVER_PORT/tcp || true'
 
                     // Запуск нового jar-файла
-                    sh 'java -jar build/libs/spring-keycloak-demo-1.0.0.jar'
+                    sh 'sudo java -jar build/libs/spring-keycloak-demo-1.0.0.jar'
                 }
             }
         }
