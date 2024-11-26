@@ -7,6 +7,16 @@ pipeline {
     }
 
     stages {
+        stage('Tests') {
+            steps {
+                script {
+                    // Проверка пользователя
+                    sh 'whoami'
+                }
+            }
+        }
+
+
         stage('Clone Repository') {
             steps {
                 git branch: 'master', url: 'https://github.com/PavelGaponenko/spring-keycloak-demo.git' // Укажите ваш репозиторий
