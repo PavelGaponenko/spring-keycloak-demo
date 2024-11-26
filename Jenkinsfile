@@ -17,8 +17,8 @@ pipeline {
             steps {
                 script {
                     // Поднимаем Keycloak
-                    sh 'docker compose -f $DOCKER_COMPOSE_FILE down'
-                    sh 'docker compose -f $DOCKER_COMPOSE_FILE up -d'
+                    sh 'sudo docker compose -f $DOCKER_COMPOSE_FILE down'
+                    sh 'sudo docker compose -f $DOCKER_COMPOSE_FILE up -d'
                 }
             }
         }
