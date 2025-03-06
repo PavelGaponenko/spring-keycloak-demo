@@ -39,7 +39,6 @@ services:
       - "19990:9990"
     volumes:
       - ./keycloak/conf/keycloak.conf:/opt/keycloak/conf/keycloak.conf
-      - ./keycloak/themes:/opt/keycloak/themes
     networks:
       - keycloak-network
 
