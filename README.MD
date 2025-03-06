@@ -91,9 +91,11 @@ public JwtAuthenticationConverter jwtAuthenticationConverter() {
 - `preferred_username` – имя пользователя
 - `app_roles` – кастомное свойство со списком ролей
 
-Для переопределения необходимо задать маппер.
+Для переопределения необходимо задать **маппер**.
 
 В Keycloak переходим в `client scopes` -> `roles` -> `mappers` -> `by configuration` -> `user realm role`
+
+> Важное уточнение: необходимо включить свойство `Add to ID token` для маппера, чтобы роли приходили и клиенту, а не только ресурс-серверу.
 
 ## OAuth Login (Клиент)
 

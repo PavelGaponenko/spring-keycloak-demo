@@ -1,8 +1,8 @@
 ### TOKEN
-POST {{ keycloak-host }}/realms/demo-realm/protocol/openid-connect/token
+POST {{ keycloak-host }}/realms/ws-realm/protocol/openid-connect/token
 Content-Type: application/x-www-form-urlencoded
 
-client_id=spring-keycloak-demo&client_secret=QgiJSO3sgFEAafuBFqQ08Hpe4f3zreA4&username=p.gaponenko&password=p.gaponenko&grant_type=password
+client_id=spring-keycloak-demo&client_secret=mhAZfJpjhWXgJuZwwLGifzPx3nvrsNcG&username=root&password=Arvyal1ofb&grant_type=password
 
 ###
 POST http://localhost:18080/realms/ws-realm/protocol/openid-connect/token
@@ -23,7 +23,7 @@ GET http://localhost:18080/realms/demo-realm/account
 GET {{ keycloak-host }}/realms/demo-realm/protocol/openid-connect/logout
 
 ###
-GET {{ app-host }}/authenticated
+GET {{ app-host }}/
 Authorization: {{ token }}
 ###
 GET {{ app-host }}/manager
