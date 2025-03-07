@@ -6,60 +6,171 @@
     <title>Панель пользователя</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
             margin: 0;
             padding: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
+            overflow: hidden;
         }
-        .container {
+
+        .portal-container {
             width: 100%;
-            max-width: 500px;
-            background: #ffffff;
-            padding: 20px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            max-width: 900px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            color: #333;
+            margin: 0;
+        }
+
+        .header a {
+            font-size: 16px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .welcome-message {
             text-align: center;
+            color: #555;
+            margin-bottom: 30px;
         }
-        h1 {
-            color: #333333;
+
+        .portal-cards {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
         }
-        .info {
-            margin-top: 10px;
-            color: #555555;
+
+        .card {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            text-align: center;
+            transition: transform 0.3s ease;
         }
-        .button {
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .card .button {
             display: inline-block;
             padding: 10px 20px;
-            margin: 10px 5px;
             font-size: 16px;
-            color: #ffffff;
+            color: #fff;
             background-color: #007bff;
             border: none;
             border-radius: 5px;
             text-decoration: none;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-        .button:hover {
+
+        .card .button:hover {
             background-color: #0056b3;
         }
-        .manager-button {
+
+        .card .manager-button {
             background-color: #28a745;
         }
-        .manager-button:hover {
+
+        .card .manager-button:hover {
             background-color: #218838;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <h1>Добро пожаловать, пользователь!</h1>
-    <p class="info">Вы успешно вошли в систему.</p>
-    <a href="/logout" class="button">Выйти</a>
-    <a href="/manager" class="button manager-button">Страница менеджера</a>
+<div class="portal-container">
+    <!-- Header -->
+    <div class="header">
+        <h1>Панель авторизованного пользователя</h1>
+        <a href="/logout">Выйти</a>
+    </div>
+
+    <!-- Welcome Message -->
+    <div class="welcome-message">
+        <p>Добро пожаловать, пользователь! Вы успешно вошли в систему.</p>
+    </div>
+
+    <!-- Cards Section -->
+    <div class="portal-cards">
+        <div class="card">
+            <h3>Основная информация</h3>
+            <p>Просмотрите и обновите вашу личную информацию, настройки и предпочтения.</p>
+            <a href="" class="button">Перейти</a>
+        </div>
+
+        <div class="card">
+            <h3>Управление доступом</h3>
+            <p>Управляйте своими правами доступа и настройками безопасности.</p>
+            <a href="" class="button">Перейти</a>
+        </div>
+
+        <div class="card">
+            <h3>Страница менеджера</h3>
+            <p>Доступ к странице с управлением для администраторов.</p>
+            <a href="/manager" class="button manager-button">Перейти</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2025 Все права защищены. <a href="/terms">Условия использования</a></p>
+    </div>
 </div>
 </body>
 </html>

@@ -3,53 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Менеджерская страница</title>
+    <title>Панель менеджера</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            margin: 0;
+            padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             min-height: 100vh;
+        }
+
+        .portal-container {
+            width: 100%;
+            max-width: 900px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            color: #333;
             margin: 0;
         }
-        .container {
-            text-align: center;
-            max-width: 600px;
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            margin: 10px;
+
+        .header a {
+            font-size: 16px;
+            color: #007bff;
+            text-decoration: none;
         }
-        h2 {
-            color: #00796b;
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: #333;
             margin-bottom: 20px;
         }
-        p {
-            margin-bottom: 20px;
+
+        .section-description {
             font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
         }
+
         .button {
             display: inline-block;
             padding: 10px 20px;
-            margin: 10px;
             font-size: 16px;
             color: #fff;
-            background-color: #00796b;
+            background-color: #007bff;
             border: none;
             border-radius: 5px;
             text-decoration: none;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease;
         }
+
         .button:hover {
-            background-color: #004d40;
+            background-color: #0056b3;
         }
-        /* Стили для окна диалога */
+
         .chat-window {
             height: 400px;
             overflow-y: auto;
@@ -58,7 +89,9 @@
             border-radius: 8px;
             background-color: #f9f9f9;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
+
         .message {
             margin: 10px 0;
             padding: 10px;
@@ -66,15 +99,58 @@
             max-width: 80%;
             word-wrap: break-word;
         }
+
         .message-sent {
             background-color: #d4f7dc;
             align-self: flex-end;
             text-align: right;
         }
+
         .message-received {
             background-color: #e0e0e0;
             align-self: flex-start;
             text-align: left;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .message-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .send-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .send-button:hover {
+            background-color: #0056b3;
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
@@ -120,17 +196,28 @@
 </head>
 <body>
 
-<div class="container">
-    <h2>Страница менеджера</h2>
-    <p>Вы вошли как менеджер. Используйте кнопки ниже для навигации:</p>
-    <a href="/" class="button">Вернуться на страницу пользователя</a>
-</div>
+<div class="portal-container">
+    <!-- Header -->
+    <div class="header">
+        <h1>Панель менеджера</h1>
+        <a href="/">Вернуться на страницу пользователя</a>
+    </div>
 
-<div class="container">
-    <h2>Отправка сообщения</h2>
-    <input id="text" placeholder="Введите сообщение" />
-    <button class="button" onclick="sendMessage()">Отправить</button>
-    <div id="messages"></div>
+    <!-- Section: Chat -->
+    <div class="chat-window">
+        <div id="messages"></div>
+    </div>
+
+    <div class="section-title">Отправить сообщение</div>
+    <div class="section-description">
+        Используйте поле ниже, чтобы отправить сообщение.
+    </div>
+    <textarea id="text" class="message-input" placeholder="Введите сообщение"></textarea>
+    <button class="send-button" onclick="sendMessage()">Отправить</button>
+
+    <div class="footer">
+        <p>&copy; 2025 Все права защищены. <a href="/terms">Условия использования</a></p>
+    </div>
 </div>
 
 </body>
