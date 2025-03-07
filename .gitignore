@@ -2,3 +2,4 @@
 build/
 .idea/
 keycloak/db/
+keycloak/opt/providers/
