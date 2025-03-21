@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ошибка 403 - Доступ запрещен</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="portal-container">
+    <div class="header">
+        <h1 class="error-text">Ошибка 403</h1>
+        <a href="/static">На главную</a>
+    </div>
+    <div class="welcome-message">
+        <p>У вас нет прав для доступа к этой странице.</p>
+    </div>
+    <div class="portal-cards">
+        <div class="card">
+            <h3>Что делать?</h3>
+            <p>Попробуйте вернуться на главную или свяжитесь с администратором, если ошибка возникла неожиданно.</p>
+            <a href="/static" class="button">На главную</a>
+        </div>
+        <div class="card">
+            <h3>Поддержка</h3>
+            <p>Свяжитесь с нашей службой поддержки для получения помощи.</p>
+            <a href="" class="button manager-button">Связаться</a>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2025 Ваша компания. Все права защищены. <a href="/privacy">Политика конфиденциальности</a></p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель пользователя</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="portal-container">
+        <div class="header">
+            <h1>Демонстрационное приложение</h1>
+            <a href="/logout">Выйти</a>
+        </div>
+
+        <div class="welcome-message">
+            <p>Добро пожаловать, пользователь! Вы успешно вошли в систему.</p>
+        </div>
+
+        <div class="portal-cards">
+            <div class="card">
+                <h3>Страница пользователя</h3>
+                <p>Просмотрите и обновите вашу личную информацию, настройки и предпочтения.</p>
+                <a href="/user" class="button">Перейти</a>
+            </div>
+
+            <div class="card">
+                <h3>Аккаунт менеджера</h3>
+                <p>Управляйте своими правами доступа и настройками безопасности.</p>
+                <a href="/manager" class="button">Перейти</a>
+            </div>
+
+            <div class="card">
+                <h3>Панель администратора</h3>
+                <p>Доступ к странице с управлением для администраторов.</p>
+                <a href="/admin" class="button manager-button">Перейти</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 Все права защищены. <a href="">Условия использования</a></p>
+        </div>
+    </div>
+</body>
+</html>

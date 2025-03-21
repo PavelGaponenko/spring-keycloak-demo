@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель администратора</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
+</head>
+<body>
+
+    <div class="portal-container">
+        <div class="header">
+            <h1>Панель администратора</h1>
+            <a href="/">Вернуться на главную</a>
+        </div>
+
+        <div class="chat-window">
+            <div id="messages"></div>
+        </div>
+
+        <div class="section-title">Отправить сообщение</div>
+        <div class="section-description">
+            Используйте поле ниже, чтобы отправить сообщение.
+        </div>
+        <label for="text">Диалог</label>
+        <textarea id="text" class="message-input" placeholder="Введите сообщение"></textarea>
+        <button class="send-button" onclick="sendMessage()">Отправить</button>
+
+        <div class="footer">
+            <p>&copy; 2025 Все права защищены. <a href="/terms">Условия использования</a></p>
+        </div>
+    </div>
+
+<script th:src="@{/js/chat.js}"></script>
+</body>
+</html>
